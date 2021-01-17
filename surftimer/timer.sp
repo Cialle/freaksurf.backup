@@ -614,7 +614,7 @@ public Action CenterSpeedDisplayTimer(Handle timer, any client)
 			Format(szSpeed, sizeof(szSpeed), "%i", RoundToNearest(g_fLastSpeed[client]));
 		else if (g_SpecTarget[client] != -1)
 			Format(szSpeed, sizeof(szSpeed), "%i", RoundToNearest(g_fLastSpeed[g_SpecTarget[client]]));
-
+		SetHudTextParams(-1.0, 0.30, 1.0, 255, 255, 255, 255, 0, 0.25, 0.0, 0.0);
 		ShowHudText(client, 2, szSpeed);
 	}
 	else

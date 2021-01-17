@@ -89,7 +89,10 @@ public void CL_OnStartTimerPress(int client)
 		if (!g_bPracticeMode[client] && !IsFakeClient(client)) {
 			char szSpeed[128];
 			char preMessage[128];
-			Format(szSpeed, sizeof(szSpeed), "%i", RoundToNearest(g_fLastSpeed[client]));
+			float fSpeed[3];
+			GetEntPropVector(target, Prop_Data, "m_vecVelocity", fSpeed);
+			float fSpeed3D = GetVectorLength(fSpeed);
+			Format(szSpeed, sizeof(szSpeed), "%i", RoundToNearest(fSpeed3D));
 			Format(preMessage, sizeof(preMessage), "%t", "StartPrestrafe", g_szChatPrefix, szSpeed);
 			if (g_iPrespeedText[client])
 				CPrintToChat(client, preMessage);
@@ -745,7 +748,10 @@ public void CL_OnStartWrcpTimerPress(int client)
 		if (g_Stage[0][client] > 1 && !g_bPracticeMode[client] && !IsFakeClient(client)) {
 			char szSpeed[128];
 			char preMessage[128];
-			Format(szSpeed, sizeof(szSpeed), "%i", RoundToNearest(g_fLastSpeed[client]));
+			float fSpeed[3];
+			GetEntPropVector(target, Prop_Data, "m_vecVelocity", fSpeed);
+			float fSpeed3D = GetVectorLength(fSpeed);
+			Format(szSpeed, sizeof(szSpeed), "%i", RoundToNearest(fSpeed3D));
 			Format(preMessage, sizeof(preMessage), "%t", "StagePrestrafe", g_szChatPrefix, g_Stage[0][client], szSpeed);
 			if (g_iPrespeedText[client])
 				CPrintToChat(client, preMessage);

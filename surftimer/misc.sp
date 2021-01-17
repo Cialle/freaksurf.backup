@@ -3216,12 +3216,14 @@ public void CenterHudDead(int client)
 			}
 			else if (g_bTimerRunning[ObservedUser])
 			{
-				obsTimer = GetGameTime() - g_fStartTime[ObservedUser] - g_fPauseTime[ObservedUser];
+				//obsTimer = GetGameTime() - g_fStartTime[ObservedUser] - g_fPauseTime[ObservedUser];
+				obsTimer = g_fCurrentRunTime[client];
 				FormatTimeFloat(client, obsTimer, 3, obsAika, sizeof(obsAika));
 			}
 			else if (g_bWrcpTimeractivated[ObservedUser] && !g_bTimerRunning[ObservedUser])
 			{
-				obsTimer = GetGameTime() - g_fStartWrcpTime[ObservedUser] - g_fPauseTime[ObservedUser];
+				//obsTimer = GetGameTime() - g_fStartWrcpTime[ObservedUser] - g_fPauseTime[ObservedUser];
+				obsTimer = g_fCurrentRunTime[client];
 				FormatTimeFloat(client, obsTimer, 3, obsAika, sizeof(obsAika));
 			}
 			else if (!g_bTimerEnabled[ObservedUser])
@@ -3277,7 +3279,7 @@ public void CenterHudAlive(int client)
 					else if (g_bPracticeMode[client])
 					{
 						// Prac mode
-						Format(module[i], 128, "<font color='#eee'>[P]: %s       </font>", pAika);
+						Format(module[i], 128, "<font color='#eee'>[P]: %s  </font>", pAika);
 					}
 					else if (g_bInBonus[client])
 					{
@@ -4405,6 +4407,8 @@ public void TeleportToSaveloc(int client, int id)
 	g_bPracticeMode[client] = true;
 	g_bWrcpTimeractivated[client] = false;
 	CL_OnStartTimerPress(client);
+	fCurrentRunTime[client] = g_fSaveLocCurrentRunTime[id];
+	fStartTime[client] = GetGameTime() - g_fSaveLocCurrentRunTime[id];
 	DispatchKeyValue(client, "targetname", g_szSaveLocTargetname[id]);
 	SetEntPropVector(client, Prop_Data, "m_vecVelocity", view_as<float>( { 0.0, 0.0, 0.0 } ));
 	TeleportEntity(client, g_fSaveLocCoords[id], g_fSaveLocAngle[id], g_fSaveLocVel[id]);

@@ -233,7 +233,7 @@ public Action Command_CenterSpeed(int client, int args) {
 		CPrintToChat(client, "%t", "CenterSpeedOff", g_szChatPrefix);
 	} else {
 		g_bCenterSpeedDisplay[client] = true;
-		SetHudTextParams(-1.0, 0.30, 1.0, 255, 255, 255, 255, 0, 0.25, 0.0, 0.0);
+		//SetHudTextParams(-1.0, 0.30, 1.0, 255, 255, 255, 255, 0, 0.25, 0.0, 0.0);
 		CreateTimer(0.1, CenterSpeedDisplayTimer, client, TIMER_FLAG_NO_MAPCHANGE|TIMER_REPEAT);
 		CPrintToChat(client, "%t", "CenterSpeedOn", g_szChatPrefix);
 	}
@@ -581,6 +581,7 @@ public Action Command_createPlayerCheckpoint(int client, int args)
 		g_fLastCheckpointMade[client] = GetGameTime();
 		g_iSaveLocUnix[g_iSaveLocCount] = GetTime();
 		GetClientName(client, g_szSaveLocClientName[g_iSaveLocCount], MAX_NAME_LENGTH);
+		g_fSaveLocCurrentRunTime[g_iSaveLocCount] = fCurrentRunTime[client];
 	}
 	else
 	{
@@ -1937,7 +1938,7 @@ void CenterSpeedDisplay(int client, bool menu = false)
 	
 	if (g_bCenterSpeedDisplay[client])
 	{
-		SetHudTextParams(-1.0, 0.30, 1.0, 255, 255, 255, 255, 0, 0.25, 0.0, 0.0);
+		//SetHudTextParams(-1.0, 0.30, 1.0, 255, 255, 255, 255, 0, 0.25, 0.0, 0.0);
 		CreateTimer(0.1, CenterSpeedDisplayTimer, client, TIMER_FLAG_NO_MAPCHANGE|TIMER_REPEAT);
 	}
 
