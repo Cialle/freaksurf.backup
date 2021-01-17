@@ -3217,13 +3217,13 @@ public void CenterHudDead(int client)
 			else if (g_bTimerRunning[ObservedUser])
 			{
 				//obsTimer = GetGameTime() - g_fStartTime[ObservedUser] - g_fPauseTime[ObservedUser];
-				obsTimer = g_fCurrentRunTime[client];
+				obsTimer = g_fCurrentRunTime[ObservedUser];
 				FormatTimeFloat(client, obsTimer, 3, obsAika, sizeof(obsAika));
 			}
 			else if (g_bWrcpTimeractivated[ObservedUser] && !g_bTimerRunning[ObservedUser])
 			{
 				//obsTimer = GetGameTime() - g_fStartWrcpTime[ObservedUser] - g_fPauseTime[ObservedUser];
-				obsTimer = g_fCurrentRunTime[client];
+				obsTimer = g_fCurrentRunTime[ObservedUser];
 				FormatTimeFloat(client, obsTimer, 3, obsAika, sizeof(obsAika));
 			}
 			else if (!g_bTimerEnabled[ObservedUser])
