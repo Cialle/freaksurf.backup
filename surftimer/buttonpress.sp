@@ -90,7 +90,7 @@ public void CL_OnStartTimerPress(int client)
 			char szSpeed[128];
 			char preMessage[128];
 			float fSpeed[3];
-			GetEntPropVector(target, Prop_Data, "m_vecVelocity", fSpeed);
+			GetEntPropVector(client, Prop_Data, "m_vecVelocity", fSpeed);
 			float fSpeed3D = GetVectorLength(fSpeed);
 			Format(szSpeed, sizeof(szSpeed), "%i", RoundToNearest(fSpeed3D));
 			Format(preMessage, sizeof(preMessage), "%t", "StartPrestrafe", g_szChatPrefix, szSpeed);
@@ -749,7 +749,7 @@ public void CL_OnStartWrcpTimerPress(int client)
 			char szSpeed[128];
 			char preMessage[128];
 			float fSpeed[3];
-			GetEntPropVector(target, Prop_Data, "m_vecVelocity", fSpeed);
+			GetEntPropVector(client, Prop_Data, "m_vecVelocity", fSpeed);
 			float fSpeed3D = GetVectorLength(fSpeed);
 			Format(szSpeed, sizeof(szSpeed), "%i", RoundToNearest(fSpeed3D));
 			Format(preMessage, sizeof(preMessage), "%t", "StagePrestrafe", g_szChatPrefix, g_Stage[0][client], szSpeed);
