@@ -4410,17 +4410,22 @@ public void TeleportToSaveloc(int client, int id)
 
 	float fGetGameTime = GetGameTime();
 
-	if (g_fSaveLocCurrentRunTime != fGetGameTime)
+	if (g_fSaveLocCurrentRunTime[id] != fGetGameTime)
 	{
 		g_fCurrentRunTime[client] = g_fSaveLocCurrentRunTime[id];
 		g_fStartTime[client] = fGetGameTime - g_fSaveLocCurrentRunTime[id];
+		CPrintToChat(client, "g_fSaveLocCurrentRunTime[id] != fGetGameTime");
+		CPrintToChat(client, "%.2f----%.2f", g_fSaveLocCurrentRunTime[id], fGetGameTime);
 	}
-	else if (g_fSaveLocCurrentWrcpRunTime != fGetGameTime)
+	else if (g_fSaveLocCurrentWrcpRunTime[id] != fGetGameTime)
 	{
 		g_fCurrentRunTime[client] = g_fSaveLocCurrentWrcpRunTime[id];
 		g_fStartTime[client] = fGetGameTime - g_fSaveLocCurrentWrcpRunTime[id];
-	}
 	
+		CPrintToChat(client, "g_fSaveLocCurrentWrcpRunTime[id] != fGetGameTime");
+		CPrintToChat(client, "%.2f----%.2f", g_fSaveLocCurrentWrcpRunTime[id], fGetGameTime);
+	}
+
 	DispatchKeyValue(client, "targetname", g_szSaveLocTargetname[id]);
 	SetEntPropVector(client, Prop_Data, "m_vecVelocity", view_as<float>( { 0.0, 0.0, 0.0 } ));
 	TeleportEntity(client, g_fSaveLocCoords[id], g_fSaveLocAngle[id], g_fSaveLocVel[id]);
