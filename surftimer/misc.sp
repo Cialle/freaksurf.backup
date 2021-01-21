@@ -4407,10 +4407,20 @@ public void TeleportToSaveloc(int client, int id)
 	g_bPracticeMode[client] = true;
 	g_bWrcpTimeractivated[client] = false;
 	CL_OnStartTimerPress(client);
-	g_fCurrentRunTime[client] = g_fSaveLocCurrentRunTime[id];
-	g_fStartTime[client] = GetGameTime() - g_fSaveLocCurrentRunTime[id];
-	g_fCurrentWrcpRunTime[client] = g_fSaveLocCurrentWrcpRunTime[id];
-	g_fStartWrcpTime[client] = GetGameTime() - g_fSaveLocCurrentWrcpRunTime[id];
+
+	float fGetGameTime = GetGameTime();
+
+	if (g_fSaveLocCurrentRunTime != fGetGameTime)
+	{
+		g_fCurrentRunTime[client] = g_fSaveLocCurrentRunTime[id];
+		g_fStartTime[client] = fGetGameTime - g_fSaveLocCurrentRunTime[id];
+	}
+	else if (g_fSaveLocCurrentWrcpRunTime != fGetGameTime)
+	{
+		g_fCurrentRunTime[client] = g_fSaveLocCurrentWrcpRunTime[id];
+		g_fStartTime[client] = fGetGameTime - g_fSaveLocCurrentWrcpRunTime[id];
+	}
+	
 	DispatchKeyValue(client, "targetname", g_szSaveLocTargetname[id]);
 	SetEntPropVector(client, Prop_Data, "m_vecVelocity", view_as<float>( { 0.0, 0.0, 0.0 } ));
 	TeleportEntity(client, g_fSaveLocCoords[id], g_fSaveLocAngle[id], g_fSaveLocVel[id]);
