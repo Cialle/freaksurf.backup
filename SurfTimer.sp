@@ -1246,8 +1246,7 @@ int g_iSaveLocCount;
 float g_fSaveLocCoords[MAX_LOCS][3]; // [loc id][coords]
 float g_fSaveLocAngle[MAX_LOCS][3]; // [loc id][angle]
 float g_fSaveLocVel[MAX_LOCS][3]; // [loc id][velocity]
-float g_fSaveLocCurrentRunTime[MAX_LOCS]; // [loc id] // 
-float g_fSaveLocCurrentWrcpRunTime[MAX_LOCS]; // [loc id]
+float g_fSaveLocCurrentRunTime[MAX_LOCS]; // [loc id] 
 char g_szSaveLocTargetname[MAX_LOCS][128]; // [loc id]
 char g_szSaveLocClientName[MAX_LOCS][MAX_NAME_LENGTH];
 int g_iLastSaveLocIdClient[MAXPLAYERS + 1];
