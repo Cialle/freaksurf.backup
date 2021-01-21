@@ -3223,7 +3223,7 @@ public void CenterHudDead(int client)
 			else if (g_bWrcpTimeractivated[ObservedUser] && !g_bTimerRunning[ObservedUser])
 			{
 				//obsTimer = GetGameTime() - g_fStartWrcpTime[ObservedUser] - g_fPauseTime[ObservedUser];
-				obsTimer = g_fCurrentRunTime[ObservedUser];
+				obsTimer = g_fCurrentWrcpRunTime[ObservedUser];
 				FormatTimeFloat(client, obsTimer, 3, obsAika, sizeof(obsAika));
 			}
 			else if (!g_bTimerEnabled[ObservedUser])
@@ -4409,6 +4409,8 @@ public void TeleportToSaveloc(int client, int id)
 	CL_OnStartTimerPress(client);
 	g_fCurrentRunTime[client] = g_fSaveLocCurrentRunTime[id];
 	g_fStartTime[client] = GetGameTime() - g_fSaveLocCurrentRunTime[id];
+	g_fCurrentWrcpRunTime[client] = g_fSaveLocCurrentWrcpRunTime[id];
+	g_fStartWrcpTime[client] = GetGameTime() - g_fSaveLocCurrentWrcpRunTime[id];
 	DispatchKeyValue(client, "targetname", g_szSaveLocTargetname[id]);
 	SetEntPropVector(client, Prop_Data, "m_vecVelocity", view_as<float>( { 0.0, 0.0, 0.0 } ));
 	TeleportEntity(client, g_fSaveLocCoords[id], g_fSaveLocAngle[id], g_fSaveLocVel[id]);

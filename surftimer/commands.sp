@@ -89,7 +89,7 @@ void CreateCommands()
 
 	// Zoning/Mapsetting Commands
 	RegConsoleCmd("sm_zones", Command_Zones, "[surftimer] 设置区域.");
-	RegConsoleCmd("sm_hookzone", Command_HookZones, "[surftimer] 借用地图自带的区域.");
+	RegConsoleCmd("sm_hookzone", Command_HookZones, "[surftimer] 借用地图自带的区域");
 	RegConsoleCmd("sm_addmaptier", Admin_insertMapTier, "[surftimer] 改变地图难度");
 	RegConsoleCmd("sm_amt", Admin_insertMapTier, "[surftimer] 改变地图难度");
 	RegConsoleCmd("sm_addspawn", Admin_insertSpawnLocation, "[surftimer] 改变出生点(指!r)");
