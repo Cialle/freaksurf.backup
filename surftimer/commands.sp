@@ -581,7 +581,15 @@ public Action Command_createPlayerCheckpoint(int client, int args)
 		g_fLastCheckpointMade[client] = GetGameTime();
 		g_iSaveLocUnix[g_iSaveLocCount] = GetTime();
 		GetClientName(client, g_szSaveLocClientName[g_iSaveLocCount], MAX_NAME_LENGTH);
-		g_fSaveLocCurrentRunTime[g_iSaveLocCount] = g_fCurrentRunTime[client];
+		if(g_fCurrentRunTime[client] != g_fLastCheckpointMade[client])
+		{
+			g_fSaveLocCurrentRunTime[g_iSaveLocCount] = g_fCurrentRunTime[client];
+		}
+		else
+		{
+			g_fSaveLocCurrentRunTime[g_iSaveLocCount] = g_fCurrentWrcpRunTime[client];
+		}
+		
 		g_fSaveLocCurrentWrcpRunTime[g_iSaveLocCount] = g_fCurrentWrcpRunTime[client];
 	}
 	else
