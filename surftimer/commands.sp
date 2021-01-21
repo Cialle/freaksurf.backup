@@ -584,6 +584,9 @@ public Action Command_createPlayerCheckpoint(int client, int args)
 		if(g_fCurrentRunTime[client] != g_fLastCheckpointMade[client])
 		{
 			g_fSaveLocCurrentRunTime[g_iSaveLocCount] = g_fCurrentRunTime[client];
+			CPrintToChat(client, "g_fCurrentRunTime[client] != g_fLastCheckpointMade[client] 222");
+			CPrintToChat(client, "%.2f----%.2f", g_fCurrentRunTime[client], g_fCurrentRunTime[client];
+			CPrintToChat(client, "%.2f", g_fSaveLocCurrentRunTime[g_iSaveLocCount];
 		}
 		else
 		{
